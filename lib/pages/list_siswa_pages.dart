@@ -63,7 +63,7 @@ class _ListSiswaState extends State<ListSiswaPages> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Edit Student"),
+          title: const Text("Edit Student"),
           content: Container(
             height: 300,
             width: 200,
@@ -74,19 +74,19 @@ class _ListSiswaState extends State<ListSiswaPages> {
                   controller: firstNameController,
                   typekeyboard: TextInputType.name,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 CustomTextfield(
                   nama: "Last Name",
                   controller: lastNameController,
                   typekeyboard: TextInputType.name,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 CustomTextfield(
                   nama: "classes",
                   controller: classesController,
                   typekeyboard: TextInputType.number,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 CustomTextfield(
                   nama: "major",
                   controller: majorController,
@@ -100,7 +100,7 @@ class _ListSiswaState extends State<ListSiswaPages> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text("cancel"),
+              child: const Text("cancel"),
             ),
             TextButton(
               onPressed: () {
@@ -111,7 +111,7 @@ class _ListSiswaState extends State<ListSiswaPages> {
                 );
                 Navigator.pop(context);
               },
-              child: Text("save"),
+              child: const Text("save"),
             ),
           ],
         );
@@ -123,7 +123,7 @@ class _ListSiswaState extends State<ListSiswaPages> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
+        title: const Center(
           child: Text(
             "Aplikasi Data Siswa",
             style: TextStyle(
@@ -137,7 +137,7 @@ class _ListSiswaState extends State<ListSiswaPages> {
       body: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 30, right: 30, top: 10),
+            padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
             child: Column(
               children: [
                 CustomTextfield(
@@ -145,28 +145,28 @@ class _ListSiswaState extends State<ListSiswaPages> {
                   nama: "Frist Name",
                   typekeyboard: TextInputType.name,
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 CustomTextfield(
                   controller: lastNameController,
                   nama: "Last Name",
                   typekeyboard: TextInputType.name,
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 CustomTextfield(
                   controller: classesController,
                   nama: "Classes",
                   typekeyboard: TextInputType.number,
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 CustomTextfield(
                   controller: majorController,
                   nama: "Major",
                   typekeyboard: TextInputType.text,
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: _addStudent,
-                  child: Text(
+                  child: const Text(
                     "Submit",
                     style: TextStyle(color: Colors.white),
                   ),
@@ -177,24 +177,24 @@ class _ListSiswaState extends State<ListSiswaPages> {
               ],
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: ListView.builder(
                 itemCount: _students.length,
                 itemBuilder: (context, index) {
                   final students = _students[index];
                   return Padding(
-                    padding: EdgeInsets.symmetric(vertical: 5),
+                    padding: const EdgeInsets.symmetric(vertical: 5),
                     child: Container(
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           colors: [
                             Colors.grey,
-                            const Color.fromARGB(255, 185, 184, 184),
-                            const Color.fromARGB(255, 201, 198, 198),
-                            const Color.fromARGB(255, 207, 204, 204),
+                            Color.fromARGB(255, 185, 184, 184),
+                            Color.fromARGB(255, 201, 198, 198),
+                            Color.fromARGB(255, 207, 204, 204),
                           ],
                         ),
                         borderRadius: BorderRadius.circular(20),
@@ -202,22 +202,22 @@ class _ListSiswaState extends State<ListSiswaPages> {
                       child: ListTile(
                         title: Text(
                           "${students.firstName} ${students.lastName}",
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                         ),
                         subtitle: Text(
                           "${students.classes} ${students.major}",
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                         ),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             IconButton(
                               onPressed: () => _showEdit(index),
-                              icon: Icon(Icons.edit),
+                              icon: const Icon(Icons.edit),
                             ),
                             IconButton(
                               onPressed: () => _deleteStudent(index),
-                              icon: Icon(Icons.delete),
+                              icon: const Icon(Icons.delete),
                             ),
                           ],
                         ),

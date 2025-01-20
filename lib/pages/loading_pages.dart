@@ -12,11 +12,11 @@ class _LoadingPagesState extends State<LoadingPages> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => ListSiswaPages(),
+          builder: (context) => const ListSiswaPages(),
         ),
       );
     });
@@ -24,7 +24,7 @@ class _LoadingPagesState extends State<LoadingPages> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
