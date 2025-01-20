@@ -17,23 +17,52 @@ class _ListSiswaState extends State<ListSiswaPages> {
   final TextEditingController classesController = TextEditingController();
   final TextEditingController majorController = TextEditingController();
   final List<Student> _students = [];
-  String? pesan;
+  String? pesan = "kanyut";
 
   void _addStudent() {
     setState(() {
-      _students.add(
-        Student(
-          firstNameController.text,
-          lastNameController.text,
-          classesController.text,
-          majorController.text,
-        ),
-      );
+      if (firstNameController.text.isEmpty ||
+          lastNameController.text.isEmpty ||
+          classesController.text.isEmpty ||
+          majorController.text.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Container(
+              height: 80,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40),
+                color: Colors.black,
+              ),
+              child: Center(child: Text("Field Tidak Boleh Kosong")),
+            ),
+            behavior: SnackBarBehavior.fixed,
+            backgroundColor: Colors.white,
+            elevation: 0,
+            
+          ),
+        );
+      } else if (firstNameController.text.isNotEmpty ||
+          lastNameController.text.isNotEmpty ||
+          classesController.text.isNotEmpty ||
+          majorController.text.isNotEmpty) {
+        _students.add(
+          Student(
+            firstNameController.text,
+            lastNameController.text,
+            classesController.text,
+            majorController.text,
+          ),
+        );
+        firstNameController.clear();
+        lastNameController.clear();
+        classesController.clear();
+        majorController.clear();
+      } else {
+        SnackBar(
+          content: Text("Error"),
+        );
+      }
     });
-    firstNameController.clear();
-    lastNameController.clear();
-    classesController.clear();
-    majorController.clear();
   }
 
   void _editStudent(int index, Student newStudent) {
