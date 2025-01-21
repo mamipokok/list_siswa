@@ -90,58 +90,64 @@ class _ListSiswaState extends State<ListSiswaPages> {
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          title: const Text("Edit Student"),
-          content: Container(
-            height: 300,
-            width: 200,
-            child: Column(
-              children: [
-                CustomTextfield(
-                  nama: "First Name",
-                  controller: firstNameController,
-                  typekeyboard: TextInputType.name,
-                ),
-                const SizedBox(height: 20),
-                CustomTextfield(
-                  nama: "Last Name",
-                  controller: lastNameController,
-                  typekeyboard: TextInputType.name,
-                ),
-                const SizedBox(height: 20),
-                CustomTextfield(
-                  nama: "classes",
-                  controller: classesController,
-                  typekeyboard: TextInputType.number,
-                ),
-                const SizedBox(height: 20),
-                CustomTextfield(
-                  nama: "major",
-                  controller: majorController,
-                  typekeyboard: TextInputType.name,
-                )
-              ],
+        return SingleChildScrollView(
+          child: AlertDialog(
+            title: const Text("Edit Student"),
+            content: Container(
+              height: 300,
+              width: 200,
+              child: Column(
+                children: [
+                  CustomTextfield(
+                    nama: "First Name",
+                    controller: firstNameController,
+                    typekeyboard: TextInputType.name,
+                  ),
+                  const SizedBox(height: 20),
+                  CustomTextfield(
+                    nama: "Last Name",
+                    controller: lastNameController,
+                    typekeyboard: TextInputType.name,
+                  ),
+                  const SizedBox(height: 20),
+                  CustomTextfield(
+                    nama: "classes",
+                    controller: classesController,
+                    typekeyboard: TextInputType.number,
+                  ),
+                  const SizedBox(height: 20),
+                  CustomTextfield(
+                    nama: "major",
+                    controller: majorController,
+                    typekeyboard: TextInputType.name,
+                  )
+                ],
+              ),
             ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  firstNameController.clear();
+                  lastNameController.clear();
+                  classesController.clear();
+                  majorController.clear();
+                },
+                child: const Text("cancel"),
+              ),
+              TextButton(
+                onPressed: () {
+                  _editStudent(
+                    index,
+                    Student(firstNameController.text, lastNameController.text,
+                        classesController.text, majorController.text),
+                  );
+                  Navigator.pop(context);
+                },
+                child: const Text("save"),
+              ),
+            ],
           ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text("cancel"),
-            ),
-            TextButton(
-              onPressed: () {
-                _editStudent(
-                  index,
-                  Student(firstNameController.text, lastNameController.text,
-                      classesController.text, majorController.text),
-                );
-                Navigator.pop(context);
-              },
-              child: const Text("save"),
-            ),
-          ],
         );
       },
     );
