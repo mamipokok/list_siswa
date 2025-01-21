@@ -28,7 +28,7 @@ class _ListSiswaState extends State<ListSiswaPages> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Container(
-              height: 80,
+              height: 30,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
                 color: Colors.black,
@@ -38,7 +38,6 @@ class _ListSiswaState extends State<ListSiswaPages> {
             behavior: SnackBarBehavior.fixed,
             backgroundColor: Colors.white,
             elevation: 0,
-            
           ),
         );
       } else if (firstNameController.text.isNotEmpty ||
