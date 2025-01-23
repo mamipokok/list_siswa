@@ -1,4 +1,4 @@
-import 'package:application/model/student.dart';
+import 'package:application/data/model/student.dart';
 import 'package:application/widget/custom_textfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,6 @@ class _ListSiswaState extends State<ListSiswaPages> {
   final TextEditingController classesController = TextEditingController();
   final TextEditingController majorController = TextEditingController();
   final List<Student> _students = [];
-  String? pesan = "kanyut";
 
   void _addStudent() {
     setState(() {
@@ -40,27 +39,20 @@ class _ListSiswaState extends State<ListSiswaPages> {
             elevation: 0,
           ),
         );
-      } else if (firstNameController.text.isNotEmpty ||
-          lastNameController.text.isNotEmpty ||
-          classesController.text.isNotEmpty ||
-          majorController.text.isNotEmpty) {
-        _students.add(
-          Student(
-            firstNameController.text,
-            lastNameController.text,
-            classesController.text,
-            majorController.text,
-          ),
-        );
-        firstNameController.clear();
-        lastNameController.clear();
-        classesController.clear();
-        majorController.clear();
-      } else {
-        SnackBar(
-          content: Text("Error"),
-        );
+        return;
       }
+      _students.add(
+        Student(
+          firstNameController.text,
+          lastNameController.text,
+          classesController.text,
+          majorController.text,
+        ),
+      );
+      firstNameController.clear();
+      lastNameController.clear();
+      classesController.clear();
+      majorController.clear();
     });
   }
 
@@ -101,7 +93,7 @@ class _ListSiswaState extends State<ListSiswaPages> {
                   CustomTextfield(
                     nama: "First Name",
                     controller: firstNameController,
-                    typekeyboard: TextInputType.name,
+                    typekeyboard: TextInputType.name, 
                   ),
                   const SizedBox(height: 20),
                   CustomTextfield(
